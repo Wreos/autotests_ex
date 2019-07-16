@@ -9,3 +9,6 @@ class ProductPage(BasePage):
         linkcart=self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET)
         linkcart.click()
 
+   # def check_sum(self):
+
+

@@ -1,5 +1,6 @@
 from .pages.product_page import ProductPage
 from .pages.base_page import BasePage
+import time
 
 
 def test_add_to_card(browser):
@@ -9,4 +10,5 @@ def test_add_to_card(browser):
     page.open()
     page.add_to_cart()
     page.solve_quiz_and_get_code()
+    time.sleep(50)
 
