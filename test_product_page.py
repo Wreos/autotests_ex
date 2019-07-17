@@ -10,5 +10,5 @@ def test_add_to_card(browser):
     page.open()
     page.add_to_cart()
     page.solve_quiz_and_get_code()
-    time.sleep(50)
+    time.sleep(100)
 

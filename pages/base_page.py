@@ -1,6 +1,10 @@
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import math
+from selenium.webdriver.support import expected_conditions as EC
+
+from selenium.webdriver.support.wait import WebDriverWait
+
 
 class BasePage(object):
     def __init__(self,browser,url, timeout=10):
@@ -19,6 +23,7 @@ class BasePage(object):
         return True
 
     def solve_quiz_and_get_code(self):
+        WebDriverWait(self.browser, 15).until(EC.alert_is_present())
         alert=self.browser.switch_to.alert
         x=alert.text.split(" ")[2]
         answer = str(math.log(abs((12*math.sin(float(x))))))

@@ -9,6 +9,8 @@ class LoginPageLocators(object):
 
 class ProductPageLocators(object):
     ADD_TO_BASKET=(By.CSS_SELECTOR, '.btn-lg.btn-primary.btn-add-to-basket')
-    PRICE=(By.CSS_SELECTOR, '.alertiner')
-    MESSAGE=(By.CSS_SELECTOR, '.btn-lg.btn-primary.btn-add-to-basket')
-    PRICE_NOM=(By.CSS_SELECTOR, '.price_color')
+    MESSAGEAFTERADD=(By.CSS_SELECTOR, 'был добавлен в вашу корзину')
+    NAMEBOOK=(By.CSS_SELECTOR, '.alert:nth-child(1)>.alertinner>strong')
+    MESSAGE_CART = (By.PARTIAL_LINK_TEXT, 'Стоимость корзины теперь составляет')
+    PRICE=(By.CSS_SELECTOR, '.alert:nth-child(3) .alertinner strong')
+    PRICE_NOM=(By.CSS_SELECTOR, '.col-sm-6 .price_color')
