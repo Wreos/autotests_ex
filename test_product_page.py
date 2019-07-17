@@ -9,6 +9,8 @@ def test_add_to_card(browser):
     page = ProductPage(browser,link)
     page.open()
     page.add_to_cart()
-    page.solve_quiz_and_get_code()
-    time.sleep(100)
+    #page.solve_quiz_and_get_code()
+    page.compare_message()
+    page.check_sum()
+    time.sleep(1)
 

@@ -22,6 +22,8 @@ class BasePage(object):
             return False
         return True
 
+
+
     def solve_quiz_and_get_code(self):
         WebDriverWait(self.browser, 15).until(EC.alert_is_present())
         alert=self.browser.switch_to.alert
