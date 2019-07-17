@@ -11,8 +11,9 @@ class ProductPage(BasePage):
 
     def compare_message(self):
         message_cart=self.browser.find_element(*ProductPageLocators.MESSAGE_CART).text
-        print(message_cart)
-        #assert self.is_element_present(*ProductPageLocators.MESSAGE_CART), "Нет сообщения об добавлении товара"
+
+        assert self.is_element_present(*ProductPageLocators.MESSAGE_CART), "Нет сообщения об добавлении товара"
+        assert self.is_element_present(*ProductPageLocators.MESSAGEAFTERADD), "Нет сообщения об добавлении товара"
         bookname = self.browser.find_element(*ProductPageLocators.NAMEBOOK).text
         print(bookname)
         booknamecart = self.browser.find_element(*ProductPageLocators.NAMEBOOKCART).text
