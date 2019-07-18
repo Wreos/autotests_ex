@@ -13,7 +13,9 @@ class ProductPage(BasePage):
         message_cart=self.browser.find_element(*ProductPageLocators.MESSAGE_CART).text
 
         assert self.is_element_present(*ProductPageLocators.MESSAGE_CART), "Нет сообщения об добавлении товара"
-        assert self.is_element_present(*ProductPageLocators.MESSAGEAFTERADD), "Нет сообщения об добавлении товара"
+        messageadding= self.is_element_present(*ProductPageLocators.MESSAGEAFTERADD).text()
+        assert "был добавлен в вашу корзину." in messageadding, "Нет сообщения об добавлении товара"
+
         bookname = self.browser.find_element(*ProductPageLocators.NAMEBOOK).text
         print(bookname)
         booknamecart = self.browser.find_element(*ProductPageLocators.NAMEBOOKCART).text
@@ -23,6 +25,6 @@ class ProductPage(BasePage):
     def check_sum(self):
         price_nom=self.browser.find_element(*ProductPageLocators.PRICE_NOM).text
         price_cart=self.browser.find_element(*ProductPageLocators.PRICE).text
-        assert price_cart==price_nom
+        assert price_cart==price_nom, "Суммы не совпадают"
 
 
