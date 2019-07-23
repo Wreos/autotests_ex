@@ -34,9 +34,6 @@ class BasePage(object):
         try:
             alert=self.browser.switch_to.alert
             print("Your code:{}".format(alert.text))
-            f = open('text.txt', 'w')
-            for index in alert.text:
-                f.write(index)
 
             alert.accept()
         except NoAlertPresentException:

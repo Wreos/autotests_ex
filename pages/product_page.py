@@ -10,16 +10,14 @@ class ProductPage(BasePage):
         linkcart.click()
 
     def compare_message(self):
-        message_cart=self.browser.find_element(*ProductPageLocators.MESSAGE_CART).text
 
         assert self.is_element_present(*ProductPageLocators.MESSAGE_CART), "Нет сообщения об добавлении товара"
-        messageadding= self.is_element_present(*ProductPageLocators.MESSAGEAFTERADD).text()
-        assert "был добавлен в вашу корзину." in messageadding, "Нет сообщения об добавлении товара"
+        messageadding= self.browser.find_element(*ProductPageLocators.MESSAGEAFTERADD).text
 
+        p="Coders at Work был добавлен в вашу корзину."
+        assert p == messageadding, "Текст сообщения не соответствует эталонному"
         bookname = self.browser.find_element(*ProductPageLocators.NAMEBOOK).text
-        print(bookname)
         booknamecart = self.browser.find_element(*ProductPageLocators.NAMEBOOKCART).text
-        print(booknamecart)
         assert bookname==booknamecart
 
     def check_sum(self):
