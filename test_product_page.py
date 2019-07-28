@@ -1,4 +1,5 @@
 from .pages.product_page import ProductPage
+from .pages.cart_page import CartPage
 from .pages.base_page import BasePage
 import time
 from .pages.login_page import LoginPage
@@ -61,3 +62,13 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.open()
     page.go_to_login_page()
     page.should_be_login_link()
+
+
+def test_guest_cant_see_product_in_cart_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com"
+    page = ProductPage(browser, link)
+    page.open()
+    page.open_basket()
+    page = CartPage(browser,link)
+    page.checkbasket()
+    time.sleep(5)

@@ -51,6 +51,12 @@ class BasePage(object):
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
+
+    def open_basket(self):
+        basket = self.browser.find_element(*BasePageLocators.BASKET_LINK)
+        basket.click()
+
+
 # решение математической задачи
     def solve_quiz_and_get_code(self):
         WebDriverWait(self.browser, 15).until(EC.alert_is_present())

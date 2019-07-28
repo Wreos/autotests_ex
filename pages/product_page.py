@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+from .cart_page import CartPage
 
 
 class ProductPage(BasePage):
@@ -37,3 +38,5 @@ class ProductPage(BasePage):
     def should_is_disappeared(self):
         assert self.is_disappeared(*ProductPageLocators.MESSAGEAFTERADD), \
             "Message is not disappeared"
+
+
