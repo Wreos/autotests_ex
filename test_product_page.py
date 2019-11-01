@@ -1,6 +1,7 @@
 from .pages.product_page import ProductPage
 from .pages.cart_page import CartPage
 from .pages.base_page import BasePage
+from .pages.login_page import LoginPage
 import time
 from .pages.login_page import LoginPage
 import pytest
@@ -71,18 +72,25 @@ def test_guest_cant_see_product_in_cart_opened_from_product_page(browser):
     page.open_basket()
     page = CartPage(browser,link)
     page.checkbasket()
-    time.sleep(5)
+    time.sleep(0.05)
 
 
 #изучение setup
-class TestUserAddToCartFromProductPage(BasePage):
+class TestUserAddToCartFromProductPage(object):
     @pytest.fixture(scope="function",autouse=True)
-    def setup(self):
+    def setup(self,browser):
+        link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/?promo=offer0"
+        page=ProductPage(self,link)
+        page.open()
+        page.register_new_user()
+
+
 
     def test_user_cant_see_success_message(browser):
         link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/?promo=offer0"
         page = ProductPage(browser, link)
         page.open()
+        page.should_be_authorized_user()
         page.should_not_be_success_message()
 
 
@@ -91,6 +99,7 @@ class TestUserAddToCartFromProductPage(BasePage):
         page = ProductPage(browser, link)
         page.open()
         page.add_to_cart()
+        page.should_be_authorized_user()
         page.solve_quiz_and_get_code()
         time.sleep(1)
         page.compare_message()

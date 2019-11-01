@@ -18,6 +18,10 @@ class BasePageLocators(object):
 class LoginPageLocators(object):
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_link")
     REGISTRATION_FORM = (By.CSS_SELECTOR, "#login_link")
+    REG_EMAIL_FIELD=(By.ID, "#id_registration-email")
+    REG_PASSWORD_FIELD=(By.ID, "#id_registration-password1")
+    REG_PASSWORDCONFIRM_FIELD = (By.ID, "#id_registration-password2")
+    REGISTER_BUTTON=(By.NAME,"registration_submit")
 
 
 class ProductPageLocators(object):
